@@ -6,7 +6,7 @@ resource "aws_route_table" "swiggy-web-rt" {
   }
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.swiggy-igwre.id
+    gateway_id = aws_internet_gatewaych.swiggy-igwre.id
   }
 }
 
