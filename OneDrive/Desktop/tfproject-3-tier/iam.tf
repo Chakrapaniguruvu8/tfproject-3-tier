@@ -1,15 +1,15 @@
-resource "aws_iam_user" "user2" {
+resource "aws_iam_user" "users" {
   for_each = toset(local.users)
 
-  name = each.value
+  name = each.value54
 }
 
 locals {
-  users = ["fresher-12", "fresher-11", "fresher-13"]
+  users = ["fresher-21", "fresher-22", "fresher-23"]
 }
 
 # Attach S3 ReadOnly Policy
-resource "aws_iam_user_policy_attachment" "s3_read" {
+resource "aws_iam_user_policy_attachment" "s3_readonly" {
   for_each = toset(local.users)
 
   user       = aws_iam_user.users[each.value].name
@@ -23,5 +23,3 @@ resource "aws_iam_user_policy_attachment" "ec2_readonly" {
   user       = aws_iam_user.users[each.value].name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
 }
-
-
