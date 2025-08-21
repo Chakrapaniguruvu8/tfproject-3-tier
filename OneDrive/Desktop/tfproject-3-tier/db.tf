@@ -1,6 +1,6 @@
 #### RDS ####
 resource "aws_db_subnet_group" "swiggy-db-sub-grp" {
-  name       = "swiggy-chakri-db"
+  name       = "swiggy-db-sub-grp76"
   subnet_ids = ["${aws_subnet.swiggy-pvt-sub-3.id}","${aws_subnet.swiggy-pvt-sub-4.id}"]
 }
 
@@ -12,10 +12,10 @@ resource "aws_db_instance" "swiggy-db" {
   instance_class              = "db.m5.large"
   identifier                  = "swiggy-db"
   username                    = "admin"
-  password                    = "chakri123"
+  password                    = "Devopsbyraham007*"
   parameter_group_name        = "default.mysql8.0"
-  db_subnet_group_name        = aws_db_subnet_group.swiggy.sub-grp.name
-  vpc_security_group_ids      = ["${aws_security_group.swiggy.db-sg.id}"]
+  db_subnet_group_name        = aws_db_subnet_group.swiggy-db-sub-grp.name
+  vpc_security_group_ids      = ["${aws_security_group.swiggy-db-sg.id}"]
   multi_az                    = true
   skip_final_snapshot         = true
   publicly_accessible          = false
@@ -25,5 +25,3 @@ resource "aws_db_instance" "swiggy-db" {
     ignore_changes  = all
   }
 }
-
-
