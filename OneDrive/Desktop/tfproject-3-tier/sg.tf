@@ -1,8 +1,8 @@
 # Security Group for ASG
 resource "aws_security_group" "swiggy-ec2-asg-sg" {
-  name        = "swiggy-ec2-asg-sgch"
+  name        = "swiggy-ec2-asgch-sg"
   description = "Security group for EC2 instances in ASG"
-  vpc_id      = aws_vpc.swiggy-vpcch.id
+  vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
     from_port   = 80
@@ -40,9 +40,9 @@ resource "aws_security_group" "swiggy-ec2-asg-sg" {
 
 # Security Group for Database
 resource "aws_security_group" "swiggy-db-sg" {
-  name        = "swiggy-db-sgch"
+  name        = "swiggy-db-sg"
   description = "Security group for Swiggy Database"
-  vpc_id      = aws_vpc.swiggy-vpcch.id
+  vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
     from_port = 3306 # MySQL/Aurora port
@@ -71,9 +71,9 @@ resource "aws_security_group" "swiggy-db-sg" {
 
 # Security Group for Application Load Balancer
 resource "aws_security_group" "swiggy-alb-sg-1" {
-  name        = "swiggy-albch-sg-1"
+  name        = "swiggy-alb-sg-1"
   description = "Security group for Swiggy Application Load Balancer"
-  vpc_id      = aws_vpc.swiggy-vpcch.id
+  vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
     from_port   = 80 # HTTP
@@ -110,9 +110,9 @@ resource "aws_security_group" "swiggy-alb-sg-1" {
 
 # Create a Security Group for ASG
 resource "aws_security_group" "swiggy-ec2-asg-sg-app" {
-  name        = "swiggy-ec2-asgch-sg-app"
+  name        = "swiggy-ec2-asg-sg-app"
   description = "Security group for Swiggy EC2 instances in ASG"
-  vpc_id      = aws_vpc.swiggy-vpcch.id
+  vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
     from_port   = 80
@@ -136,6 +136,6 @@ resource "aws_security_group" "swiggy-ec2-asg-sg-app" {
   }
 
   tags = {
-    Name = "swiggy-ec2-asg-sgch-app"
+    Name = "swiggy-ec2-asg-sg-app"
   }
 }
