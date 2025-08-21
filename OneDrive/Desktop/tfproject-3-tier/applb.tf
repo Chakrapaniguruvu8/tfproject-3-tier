@@ -1,6 +1,6 @@
 # Create a Load Balancer
 resource "aws_lb" "external" {
-  name               = "swiggy-lb22"
+  name               = "swiggy-lb4"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.swiggy-alb-sg-1.id]
@@ -11,7 +11,7 @@ resource "aws_lb" "external" {
 
 # Create a Target Group
 resource "aws_lb_target_group" "external-elb" {
-  name     = "external-tg23"
+  name     = "external-tg3"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.swiggy-vpc.id
@@ -27,6 +27,6 @@ resource "aws_lb_target_group" "external-elb" {
 
 # Attach Auto Scaling Group Instances to Target Group
 resource "aws_autoscaling_attachment" "swiggy-web-asg-attachment" {
-  autoscaling_group_name = aws_autoscaling_group.weswiggy-web-asg.name
-  lb_target_group_arn    = aws_lb_target_group.external32-elb.arn
+  autoscaling_group_name = aws_autoscaling_group.swiggy-web-asg.name
+  lb_target_group_arn    = aws_lb_target_group.external-elb.arn
 }
