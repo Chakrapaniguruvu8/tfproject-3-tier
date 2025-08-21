@@ -1,6 +1,6 @@
 # Create an EC2 Auto Scaling Group - app
 resource "aws_autoscaling_group" "swiggy-app-asg" {
-  name = "swiggy-chakri-asg"
+  name = "swiggy-appch-asg"
 
   launch_template {
     id      = aws_launch_template.swiggy-app-template.id
@@ -19,10 +19,10 @@ resource "aws_autoscaling_group" "swiggy-app-asg" {
 
 # Create a launch template for the EC2 instances
 resource "aws_launch_template" "swiggy-app-template" {
-  name_prefix   = "swiggy-chakri-template"
-  image_id      = "ami-0c4a668b99e68bbde"
+  name_prefix   = "swiggy-appch-template"
+  image_id      = "ami-0861f4e788f5069dd"
   instance_type = "t3.micro"
-  key_name      = "3tier"
+  key_name      = "3tierprojectforchakri"
 
   network_interfaces {
     security_groups             = [aws_security_group.swiggy-ec2-asg-sg-app.id]
@@ -41,4 +41,3 @@ resource "aws_launch_template" "swiggy-app-template" {
     ignore_changes  = all
   }
 }
-
