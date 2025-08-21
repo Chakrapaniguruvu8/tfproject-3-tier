@@ -1,12 +1,12 @@
 # Public Subnets 
 resource "aws_subnet" "swiggy-pub-sub-1" {
-  vpc_id                  = aws_vpc.swiggy-vpc.id
+  vpc_id                  = aws_vpc.swiggy-vpcch.id
   cidr_block              = "10.0.0.0/28"
   availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = "true"
 
   tags = {
-    Name = "swiggy-pub-sub-1"
+    Name = "swiggy-pub-subch-1"
   }
 }
 
@@ -22,22 +22,22 @@ resource "aws_subnet" "swiggy-pub-sub-2" {
 
 
 # Private Subnets
-resource "aws_subnet" "swiggy-pvt-sub-1" {
+resource "aws_subnet" "swiggy-pvt-subch-1" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.32/28"
   availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = false
   tags = {
-    Name = "swiggy-pvt-sub-1"
+    Name = "swiggy-pvt-chhsub-1"
   }
 }
-resource "aws_subnet" "swiggy-pvt-sub-2" {
+resource "aws_subnet" "swiggy-pvtch-sub-2" {
   vpc_id                  = aws_vpc.swiggy-vpc.id
   cidr_block              = "10.0.0.48/28"
   availability_zone       = "ap-south-1b"
   map_public_ip_on_launch = false
   tags = {
-    Name = "swiggy-pvt-sub-2"
+    Name = "swiggy-pvtch-sub-2"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_subnet" "swiggy-pvt-sub-3" {
   availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = false
   tags = {
-    Name = "swiggy-pvt-sub-3"
+    Name = "swiggy-pvtch-sub-3"
   }
 }
 resource "aws_subnet" "swiggy-pvt-sub-4" {
@@ -56,7 +56,7 @@ resource "aws_subnet" "swiggy-pvt-sub-4" {
   availability_zone       = "ap-south-1b"
   map_public_ip_on_launch = false
   tags = {
-    Name = "swiggy-pvt-sub-4"
+    Name = "swiggy-pvtch-sub-4"
   }
 }
 
